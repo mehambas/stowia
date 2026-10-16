@@ -105,6 +105,12 @@
 "Paste as Plain Text  ⇧↵" = "Biçimlendirmeden yapıştır  ⇧↵";
 
 "Stowia Settings" = "Stowia ayarları";
+"General" = "Genel";
+"Open at login" = "Girişte aç";
+"Starts Stowia in the menu bar when you log in." = "Oturum açtığında Stowia’yı menü çubuğunda başlatır.";
+"Allow Stowia in System Settings › General › Login Items." = "Sistem Ayarları › Genel › Giriş Öğeleri’nde Stowia’ya izin ver.";
+"macOS did not change the login item: %@" = "macOS giriş öğesini değiştirmedi: %@";
+"Open Login Items Settings…" = "Giriş Öğeleri ayarlarını aç…";
 "Done" = "Bitti";
 "History" = "Geçmiş";
 "Keep clips for" = "Saklama süresi";

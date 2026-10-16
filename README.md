@@ -36,7 +36,7 @@ Stowia is where things get stowed: *stow*, to put away safely, and *-ia*, as in 
 4. Stowia lives in the menu bar. Press **⌘⇧V** or click its icon to open the panel. It saves what you copy from then on.
 5. To paste with **Return**, Stowia needs Accessibility access: in the panel choose **⚙ › Settings…**, click **Allow Access…** under **Pasting** and turn on Stowia in **System Settings › Privacy & Security › Accessibility**. Without it, Return copies the clip and you paste with ⌘V.
 
-To start Stowia when you log in, add it in **System Settings › General › Login Items**.
+To start Stowia when you log in, turn on **⚙ › Settings… › General › Open at login**.
 
 ### Updates
 
@@ -60,6 +60,7 @@ Some apps use ⌘⇧V to paste without formatting; while Stowia runs, ⌘⇧V op
 
 **Settings** (⚙ › Settings…):
 
+- **General**: open at login.
 - **History**: how long clips are kept, how many, and how much space they may take.
 - **Pasting**: Accessibility access for pasting with Return.
 - **Privacy**: apps whose copies are never saved, Clear Last Hour and Clear History. Clearing keeps your favorites.
@@ -75,8 +76,8 @@ Some apps use ⌘⇧V to paste without formatting; while Stowia runs, ⌘⇧V op
 
 ## Uninstall
 
-1. Quit Stowia: **⚙ › Quit Stowia** in the panel.
-2. Move `/Applications/Stowia.app` to the Trash, and remove it from **Login Items** if you added it there.
+1. If **Open at login** is on, turn it off in **Settings › General**.
+2. Quit Stowia with **⚙ › Quit Stowia** in the panel and move `/Applications/Stowia.app` to the Trash.
 3. Remove its history, settings and Accessibility permission:
 
    ```sh

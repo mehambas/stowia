@@ -11,4 +11,5 @@ First public release.
 - Privacy: content marked as concealed, transient or auto-generated is skipped, password managers are excluded by default, and any app can be excluded. Pause, Clear Last Hour and Clear History.
 - Limits for age, count and size; favorites don't count.
 - Update check: once a day Stowia asks GitHub for the latest version number, and nothing about you or your clipboard is sent. Download and Install verifies the disk image, opens it and quits Stowia so you can drag the new version to Applications.
+- Open at login, in Settings › General.
 - English and Turkish.

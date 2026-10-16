@@ -21,7 +21,7 @@ The history lives in `~/Library/Application Support/Stowia` (permissions 0700): 
 
 Limits are applied from the newest clip down: clips older than the retention time, beyond the maximum count or beyond the size limit are removed after each copy and once a minute. Favorites are never removed by the limits or by Clear History. For files only the location is kept; a moved or deleted file can't be restored.
 
-Settings, the menu bar position and the window frame are in `~/Library/Preferences/com.hamzabasaran.stowia.plist`.
+Settings, the menu bar position and the window frame are in `~/Library/Preferences/com.hamzabasaran.stowia.plist`. **Open at login** registers the app with `SMAppService.mainApp`; Settings reads its status again each time it opens, since it can also be switched off in System Settings › General › Login Items.
 
 Stowia was called Sakla before its first release. On the first launch it copies Sakla's history and settings, if there are any and Stowia has none yet, and leaves the originals in place.
 
@@ -62,7 +62,7 @@ dist/Stowia.app/Contents/MacOS/Stowia --demo
 dist/Stowia.app/Contents/MacOS/Stowia --demo --self-check /tmp/stowia-check
 ```
 
-`--demo` shows sample clips from a temporary folder. It doesn't watch the clipboard, doesn't import from Sakla and saves no settings; using a clip still copies it. `--self-check` additionally walks through the panel and the library: the panel's size, search by name, favorites, focus, arrow keys, Escape, reopening, closing on an outside click and keeping the selection in the library. It writes `checks.json` and screenshots of the panel, an image preview, the library and both ends of the settings, then quits.
+`--demo` shows sample clips from a temporary folder. It doesn't watch the clipboard, doesn't import from Sakla, never registers a login item and saves no settings; using a clip still copies it. `--self-check` additionally walks through the panel and the library: the panel's size, search by name, favorites, focus, arrow keys, Escape, reopening, closing on an outside click and keeping the selection in the library. It writes `checks.json` and screenshots of the panel, an image preview, the library and both ends of the settings, then quits.
 
 The tests cover favorites, persistence across launches, duplicates, the age, count and size limits, clearing and the removal of clip files, Turkish search, an unreadable history, concealed and oversized clips, rich and plain text, several files and images, image previews, the import from Sakla, versions, GitHub's release answers and checksum files. They use their own named pasteboards and temporary folders, never the clipboard or your settings.
 

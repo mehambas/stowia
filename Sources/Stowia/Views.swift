@@ -3,6 +3,7 @@ import AppKit
 import ApplicationServices
 import StowiaCore
 import UniformTypeIdentifiers
+import ServiceManagement
 
 let accent = Color(white: 0.92)
 let canvas = Color(white: 0.055)
@@ -298,16 +299,31 @@ private struct SettingsView: View {
     @State private var confirmClear = false
     @State private var clearHour = false
     @State private var trusted = AXIsProcessTrusted()
+    @StateObject private var loginItem: LoginItem
 
     init(store: Store) {
         self.store = store
         updater = store.updater
+        _loginItem = StateObject(wrappedValue: LoginItem(active: !store.demo))
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack { Text("Stowia Settings").font(.system(size: 23, weight: .semibold)); Spacer(); Button("Done") { save(); dismiss() }.keyboardShortcut(.defaultAction) }
             Form {
+                Section("General") {
+                    Toggle(isOn: Binding(get: { loginItem.enabled }, set: { loginItem.set($0) })) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Open at login")
+                            Text(loginItem.detail).font(.caption).foregroundStyle(.secondary)
+                        }
+                    }
+                    .disabled(store.demo)
+                    if loginItem.status == .requiresApproval {
+                        Button("Open Login Items Settings…") { SMAppService.openSystemSettingsLoginItems() }
+                    }
+                }
+                .onAppear { loginItem.refresh() }
                 Section("History") {
                     Picker("Keep clips for", selection: $store.preferences.retentionDays) {
                         ForEach([1, 7, 30, 90, 365], id: \.self) { Text("\($0) days").tag($0) }
