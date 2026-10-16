@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- On macOS 26 the app icon showed Paravent’s folding screen instead of Stowia’s drawer. The icon is built again from Stowia’s own artwork.
+
 ## 0.1.0
 
 First public release.
