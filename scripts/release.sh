@@ -17,10 +17,12 @@ STOWIA_SIGN_IDENTITY="Stowia Self-Signed" bash scripts/build.sh
 # and the update check looks for the assets Stowia.dmg and Stowia.dmg.sha256.
 dmg="dist/Stowia.dmg"
 staging="$(mktemp -d)"
-trap 'rm -rf "$staging"' EXIT
+trap 'rm -rf "$staging" "$staging.dmg"' EXIT
 ditto dist/Stowia.app "$staging/Stowia.app"
 ln -s /Applications "$staging/Applications"
-hdiutil create -quiet -ov -volname "Stowia" -srcfolder "$staging" -fs HFS+ -format UDZO "$dmg"
+# On macOS 26 a compressed HFS+ image made in one step from this folder failed hdiutil verify; converting a writable one works.
+hdiutil create -quiet -volname "Stowia" -srcfolder "$staging" -fs HFS+ -format UDRW "$staging.dmg"
+hdiutil convert -quiet -ov "$staging.dmg" -format UDZO -o "$dmg"
 hdiutil verify -quiet "$dmg"
 (cd dist && shasum -a 256 Stowia.dmg > Stowia.dmg.sha256)
 printf 'Release %s (build %s), attach both files to the v%s release:\n%s  %s\n%s  SHA-256 %s\n' "$version" "$build_number" "$version" \
